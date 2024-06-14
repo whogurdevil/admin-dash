@@ -3,15 +3,16 @@ import { homeCardType } from "../_types/home";
 import { Card, Typography, Box, Chip, Icon } from "@mui/material";
 import { CallMade, CallReceived } from "@mui/icons-material";
 
-export default function Home(props: any) {
+export default function SecondaryHomeCard(props: any) {
   return (
     <Card sx={{ padding: 3 }}>
+      <Typography fontWeight={"bold"}>{props.data.topic}</Typography>
       <Box
         sx={{
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          marginBottom: 1,
+          marginY: 2,
         }}
       >
         <Typography variant="h5" fontWeight="bold" sx={{ marginRight: 1 }}>
@@ -25,15 +26,7 @@ export default function Home(props: any) {
           {props.data.addition}
         </Typography>
         <Box flexGrow={1} />
-        <Chip
-          variant="outlined"
-          icon={
-            props.data.growth ? (
-              <CallMade color="inherit" />
-            ) : (
-              <CallReceived color="inherit" />
-            )
-          }
+        <Icon
           sx={{
             borderColor: props.data.growth ? "success.main" : "error.main",
             color: props.data.growth ? "success.main" : "error.main",
@@ -41,7 +34,9 @@ export default function Home(props: any) {
             alignItems: "center",
             marginRight: 1,
           }}
-        />
+        >
+          <props.data.icon />
+        </Icon>
       </Box>
       <Typography>{props.data.context} </Typography>
     </Card>

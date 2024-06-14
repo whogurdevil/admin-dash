@@ -39,6 +39,7 @@ export default function DonutCard(props: any) {
       sx={{
         padding: 3,
         display: "flex",
+        height: "100%",
         alignItems: "center",
         flexDirection: "column",
       }}
@@ -48,7 +49,7 @@ export default function DonutCard(props: any) {
       </Typography>
       <Box
         sx={{
-          width: "300px",
+          width: "280px",
           display: "flex",
           justifyContent: "center",
           paddingY: 2,
@@ -56,7 +57,7 @@ export default function DonutCard(props: any) {
       >
         <Doughnut
           data={props.data}
-          options={{ cutout: 98 }}
+          options={{ cutout: 95, responsive: true }}
           plugins={[centerTextPlugin]}
         />
       </Box>

@@ -12,6 +12,7 @@ export default function ChartCard(props: any) {
         width: "100%",
         marginTop: 3,
         justifyContent: "space-between",
+        alignItems: "center",
       }}
     >
       <Box>
