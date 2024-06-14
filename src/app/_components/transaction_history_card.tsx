@@ -4,7 +4,7 @@ import React from "react";
 import { Box, Card, Grid, Typography } from "@mui/material";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import ChartCard from "./chart_card";
+import TransferCard from "./transfer_card";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -35,21 +35,33 @@ const centerTextPlugin = {
 
 export default function DonutCard(props: any) {
   return (
-    <Card sx={{ padding: 2, minWidth: "600px" }}>
+    <Card
+      sx={{
+        padding: 3,
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
       <Typography variant="h6" fontWeight={"bold"}>
         Transaction History
       </Typography>
-      <Box sx={{ paddingX: "100px" }}>
+      <Box
+        sx={{
+          width: "300px",
+          display: "flex",
+          justifyContent: "center",
+          paddingY: 2,
+        }}
+      >
         <Doughnut
           data={props.data}
           options={{ cutout: 98 }}
           plugins={[centerTextPlugin]}
         />
       </Box>
-      {props.cardData.map((data) => (
-        <Grid item xs={12} sm={6} md={3} paddingTop={2}>
-          <ChartCard data={data} />
-        </Grid>
+      {props.cardData.map((data, index) => (
+        <TransferCard data={data} />
       ))}
     </Card>
   );

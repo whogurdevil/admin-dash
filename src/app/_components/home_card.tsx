@@ -5,7 +5,7 @@ import { CallMade, CallReceived } from "@mui/icons-material";
 
 export default function Home(props: any) {
   return (
-    <Card sx={{ minWidth: "150px", height: "120px", padding: 3 }}>
+    <Card sx={{ height: "120px", padding: 3 }}>
       <Box
         sx={{
           display: "flex",

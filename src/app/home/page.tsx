@@ -1,8 +1,7 @@
 import HomeCard from "@/app/_components/home_card";
 import { homeCardType } from "../_types/home";
 import { Grid } from "@mui/material";
-import DonutCard from "../_components/donut_card";
-import ChartCard from "../_components/chart_card";
+import TransactionHistoryCard from "../_components/transaction_history_card";
 
 const cardData = [
   {
@@ -67,8 +66,8 @@ export default function Page() {
           <HomeCard data={data} />
         </Grid>
       ))}
-      <Grid item xs={12} sm={6} md={3}>
-        <DonutCard data={donutData} cardData={donutCardData} />
+      <Grid item xs={16} sm={8} md={4}>
+        <TransactionHistoryCard data={donutData} cardData={donutCardData} />
       </Grid>
     </Grid>
   );
