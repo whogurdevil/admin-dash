@@ -194,7 +194,7 @@ export default function MiniDrawer() {
     </Menu>
   );
   return (
-    <Box sx={{ display: "flex" }}>
+    <>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -216,7 +216,7 @@ export default function MiniDrawer() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Corona
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -357,9 +357,9 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1 }}>
         <DrawerHeader />
       </Box>
-    </Box>
+    </>
   );
 }

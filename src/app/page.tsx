@@ -1,8 +1,5 @@
-import Sidebar from "./components/sidebar";
-export default function Home() {
-  return (
-    <main>
-      <Sidebar />
-    </main>
-  );
+import "./globals.css";
+
+export default function Page() {
+  return <h1>Hello, Home page!</h1>;
 }

@@ -5,19 +5,22 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#F9F4DA",
+      main: "#0090E7",
     },
     secondary: {
-      main: "#FCBA28",
+      main: "#8F5FE8",
     },
     success: {
-      main: "#00ff0d",
+      main: "#00D25B",
     },
     error: {
-      main: "#ee2400",
+      main: "#fc424a",
+    },
+    warning: {
+      main: "#FFAB00",
     },
     background: {
-      default: "#231F20",
+      default: "#000000",
     },
   },
 });
