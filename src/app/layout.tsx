@@ -21,7 +21,7 @@ export default function RootLayout({
       <body>
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeProvider theme={theme}>
-            <Box display={"flex"} sx={{ paddingTop: "100px", paddingX: 3 }}>
+            <Box display={"flex"} sx={{ paddingY: "100px", paddingX: 3 }}>
               <SideBar />
               {children}
             </Box>

@@ -85,7 +85,16 @@ const rows = [
 ];
 export default function OrdersTable() {
   return (
-    <Card>
+    <Card
+      sx={{
+        padding: 3,
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Typography fontWeight={"bold"} variant="h6">
+        Order Status
+      </Typography>
       <Table>
         <TableHead>
           <TableRow>

@@ -22,7 +22,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MenuIcon from "@mui/icons-material/Menu";
-import { AccountCircle, MoreSharp, Window } from "@mui/icons-material";
+import { AccountCircle, MoreSharp, Window, Home } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
 import {
   MenuItem,
@@ -318,13 +318,14 @@ export default function MiniDrawer() {
                 }}
               >
                 <ListItemIcon
+                  onClick={() => navifa}
                   sx={{
                     minWidth: 0,
                     mr: open ? 3 : "auto",
                     justifyContent: "center",
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <Home /> : <MailIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>

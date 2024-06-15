@@ -3,6 +3,7 @@ import { homeCardType } from "../_types/home";
 import { Grid } from "@mui/material";
 import TransactionHistoryCard from "../_components/transaction_history_card";
 import OpenProjectsCard from "../_components/open_projects_card";
+import CarousalCard from "../_components/carousal_card";
 
 import {
   CurrencyRupee,
@@ -11,6 +12,9 @@ import {
 } from "@mui/icons-material";
 import SecondaryHomeCard from "../_components/home_secondary_card";
 import OrdersTable from "../_components/home_table";
+import MessagesCard from "../_components/messages_card";
+import TodoListComponent from "../_components/todo_list";
+import CountriesCard from "../_components/countries_card";
 
 const cardData = [
   {
@@ -116,6 +120,18 @@ export default function Page() {
       ))}
       <Grid item xs={12} sm={12} md={12}>
         <OrdersTable />
+      </Grid>
+      <Grid item xs={12} sm={12} md={4}>
+        <MessagesCard />
+      </Grid>
+      <Grid item xs={12} sm={12} md={4}>
+        <CarousalCard />
+      </Grid>
+      <Grid item xs={12} sm={12} md={4}>
+        <TodoListComponent />
+      </Grid>
+      <Grid item xs={12} sm={12} md={12}>
+        <CountriesCard />
       </Grid>
     </Grid>
   );

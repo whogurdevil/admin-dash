@@ -62,7 +62,7 @@ export default function DonutCard(props: any) {
         />
       </Box>
       {props.cardData.map((data, index) => (
-        <TransferCard data={data} />
+        <TransferCard data={data} key={index} />
       ))}
     </Card>
   );
