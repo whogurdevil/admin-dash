@@ -51,14 +51,14 @@ const TodoListComponent = () => {
   ]);
   const [inputValue, setInputValue] = useState("");
 
-  const statusChangedHandler = (event, id) => {
+  const statusChangedHandler = (event: any, id: any) => {
     const updatedTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, isCompleted: event.target.checked } : todo,
     );
     setTodos(updatedTodos);
   };
 
-  const addTodo = (event) => {
+  const addTodo = (event: any) => {
     event.preventDefault();
     if (!inputValue.trim()) return; // Prevent adding empty tasks
 
@@ -71,12 +71,12 @@ const TodoListComponent = () => {
     setInputValue("");
   };
 
-  const removeTodo = (id) => {
+  const removeTodo = (id: any) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
 
-  const inputChangeHandler = (event) => {
+  const inputChangeHandler = (event: any) => {
     setInputValue(event.target.value);
   };
 

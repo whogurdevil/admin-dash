@@ -61,7 +61,7 @@ export default function DonutCard(props: any) {
           plugins={[centerTextPlugin]}
         />
       </Box>
-      {props.cardData.map((data, index) => (
+      {props.cardData.map((data: any, index: any) => (
         <TransferCard data={data} key={index} />
       ))}
     </Card>

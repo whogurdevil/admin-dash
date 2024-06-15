@@ -7,8 +7,6 @@ const stylingFunction = ({
   countryValue,
   minValue,
   maxValue,
-  country,
-  color,
 }: CountryContext) => {
   const calculatedValue =
     typeof countryValue === "string" ? minValue : countryValue;
@@ -23,9 +21,9 @@ const stylingFunction = ({
     minValue: 1000,
   };
 };
-export default function App(props) {
+export default function App(props: any) {
   // Convert props.data to the format required by react-svg-worldmap
-  const data = props.data.map((item) => ({
+  const data = props.data.map((item: any) => ({
     country: item.code,
     value: item.value,
   }));

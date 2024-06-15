@@ -7,7 +7,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 
-export default function MessagesCard(props) {
+export default function MessagesCard(props: any) {
   return (
     <List sx={{ width: "100%", bgcolor: "Background.default" }}>
       <ListItem

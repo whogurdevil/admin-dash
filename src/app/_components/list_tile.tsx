@@ -10,7 +10,7 @@ import Avatar from "@mui/material/Avatar";
 import { Typography, Box, Grid } from "@mui/material";
 import { DocumentScanner } from "@mui/icons-material";
 
-export default function AlignItemsList(props) {
+export default function AlignItemsList(props: any) {
   return (
     <List
       sx={{

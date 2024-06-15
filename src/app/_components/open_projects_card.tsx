@@ -52,7 +52,7 @@ const listData = [
   },
 ];
 
-export default function OpenProjectsCard(props) {
+export default function OpenProjectsCard(props: any) {
   return (
     <Card
       sx={{
@@ -70,7 +70,11 @@ export default function OpenProjectsCard(props) {
         <Typography color={"grey"}>Your data status</Typography>
       </Grid>
       {listData.map((data, index) => (
-        <ListTiles data={data} lastItem={index === listData.length - 1} />
+        <ListTiles
+          data={data}
+          lastItem={index === listData.length - 1}
+          key={index}
+        />
       ))}
     </Card>
   );
