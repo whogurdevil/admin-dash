@@ -11,8 +11,8 @@ import {
   Box,
 } from "@mui/material";
 import GlobeMap from "./global_map"; // Assuming GlobeMap component is correctly implemented
+import styles from "@/styles/CountriesCard.module.scss"; // Import the SCSS module
 
-// Updated rows with additional fields for country information
 const rows = [
   {
     flagSrc: "https://flagsapi.com/US/flat/64.png",
@@ -53,8 +53,8 @@ const rows = [
 
 export default function CountriesCard() {
   return (
-    <Card sx={{ padding: 3, display: "flex", flexDirection: "column" }}>
-      <Typography fontWeight={"bold"} variant="h6">
+    <Card className={styles.card}>
+      <Typography className={styles.title} variant="h6">
         Visitors By Countries
       </Typography>
       <Grid container spacing={3}>
@@ -77,16 +77,7 @@ export default function CountriesCard() {
           </Table>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              width: "100%",
-              height: "400px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: 2,
-            }}
-          >
+          <Box className={styles.mapBox}>
             <GlobeMap data={rows} />
           </Box>
         </Grid>

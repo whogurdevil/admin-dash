@@ -1,20 +1,20 @@
-import HomeCard from "@/app/_components/home_card";
-import { homeCardType } from "../_types/home";
+import HomeCard from "@/components/home_card";
+import { homeCardType } from "@/types/home";
 import { Grid } from "@mui/material";
-import TransactionHistoryCard from "../_components/transaction_history_card";
-import OpenProjectsCard from "../_components/open_projects_card";
-import CarousalCard from "../_components/carousal_card";
+import TransactionHistoryCard from "@/components/transaction_history_card";
+import OpenProjectsCard from "@/components/open_projects_card";
+import CarousalCard from "@/components/carousal_card";
 
 import {
   CurrencyRupee,
   BusinessCenterOutlined,
   TvOutlined,
 } from "@mui/icons-material";
-import SecondaryHomeCard from "../_components/home_secondary_card";
-import OrdersTable from "../_components/home_table";
-import MessagesCard from "../_components/messages_card";
-import TodoListComponent from "../_components/todo_list";
-import CountriesCard from "../_components/countries_card";
+import SecondaryHomeCard from "@/components/home_secondary_card";
+import OrdersTable from "@/components/home_table";
+import MessagesCard from "@/components/messages_card";
+import TodoListComponent from "@/components/todo_list";
+import CountriesCard from "@/components/countries_card";
 
 const cardData = [
   {

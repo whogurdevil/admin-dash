@@ -13,8 +13,8 @@ import {
   ArrowCircleLeftRounded,
   ArrowCircleRightRounded,
 } from "@mui/icons-material";
+import styles from "@/styles/CarousalCard.module.scss"; // Import the SCSS module
 
-// Array of random landscape image URLs
 const imageUrls = [
   "https://picsum.photos/id/13/1800/1667.jpg",
   "https://picsum.photos/id/85/1280/774.jpg",
@@ -44,21 +44,14 @@ export default function CarousalCard() {
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
-    }, 3000); // Change slide every 3 seconds
+    }, 3000);
     return () => clearInterval(interval);
   }, [currentIndex]);
 
   return (
-    <Card
-      sx={{
-        padding: 3,
-        display: "flex",
-        height: "100%",
-        flexDirection: "column",
-      }}
-    >
+    <Card className={styles.card}>
       <Grid container flexDirection={"row"} justifyContent={"space-between"}>
-        <Typography variant="h6" fontWeight={"bold"} paddingBottom={2}>
+        <Typography variant="h6" className={styles.typography}>
           Portfolio Slide
         </Typography>
         <Box flexGrow={1} />
@@ -79,28 +72,18 @@ export default function CarousalCard() {
           indicators={false}
         >
           {imageUrls.map((url, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: "flex",
-                height: "300px",
-                justifyContent: "center",
-                overflow: "hidden", // Clip any overflow
-              }}
-            >
+            <Box key={index} className={styles.imageBox}>
               <img
                 src={url}
                 alt={`Landscape ${index + 1}`}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                className={styles.image}
               />
             </Box>
           ))}
         </Carousel>
       )}
-      <List
-        sx={{ width: "100%", bgcolor: "Background.default", paddingTop: 2 }}
-      >
-        <ListItem alignItems="flex-start" sx={{ paddingX: 0 }}>
+      <List className={styles.list}>
+        <ListItem alignItems="flex-start" className={styles.listItem}>
           <ListItemAvatar>
             <Avatar
               alt="CeeCee Bass"
@@ -110,12 +93,12 @@ export default function CarousalCard() {
           <ListItemText
             primary="CeeCee Bass"
             secondary={
-              <Typography color={"grey"}>
+              <Typography className={styles.secondaryText}>
                 Well it seems to working right now.
               </Typography>
             }
           />
-          <Typography color={"grey"}>4 hours ago</Typography>
+          <Typography className={styles.timeText}>4 hours ago</Typography>
         </ListItem>
         <Divider />
       </List>

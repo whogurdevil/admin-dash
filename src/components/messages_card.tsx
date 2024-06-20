@@ -3,6 +3,7 @@
 import React from "react";
 import Messagetile from "./message_tile";
 import { Card, Grid, Typography, Box } from "@mui/material";
+import styles from "@/styles/MessageCard.module.scss"; // Import the SCSS module
 
 const messagesData = [
   {
@@ -45,19 +46,18 @@ const messagesData = [
 
 export default function MessageCard() {
   return (
-    <Card
-      sx={{
-        padding: 3,
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <Grid container flexDirection={"row"} justifyContent={"space-between"}>
-        <Typography variant="h6" fontWeight={"bold"}>
+    <Card className={styles.card}>
+      <Grid
+        container
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Typography variant="h6" fontWeight="bold">
           Messages
         </Typography>
         <Box flexGrow={1} />
-        <Typography color={"grey"}>View All</Typography>
+        <Typography color="grey">View All</Typography>
       </Grid>
       {messagesData.map((data, index) => (
         <Messagetile data={data} key={index} />

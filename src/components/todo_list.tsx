@@ -15,8 +15,9 @@ import {
   Grid,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import styles from "@/styles/TodoList.module.scss";
 
-const TodoListComponent = () => {
+const TodoList = () => {
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -81,30 +82,11 @@ const TodoListComponent = () => {
   };
 
   return (
-    <Card
-      sx={{
-        padding: 3,
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-      }}
-    >
-      <Typography fontWeight={"bold"} variant="h6">
-        To Do List
-      </Typography>
-      <form
-        className="add-items"
-        onSubmit={addTodo}
-        style={{ paddingBlock: 2, display: "flex", width: "100%" }}
-      >
-        <Grid container spacing={1} justifyContent={"space-between"}>
-          <Grid
-            item
-            xs={10}
-            md={10}
-            justifyContent={"space-between"}
-            display={"flex"}
-          >
+    <Card className={styles.card}>
+      <Typography className={styles.title}>To Do List</Typography>
+      <form className={styles["add-items"]} onSubmit={addTodo}>
+        <Grid container spacing={1} justifyContent="space-between">
+          <Grid item xs={10} md={10} className={styles["input-wrapper"]}>
             <TextField
               type="text"
               label="What do you need to do today?"
@@ -115,23 +97,17 @@ const TodoListComponent = () => {
               fullWidth
             />
           </Grid>
-          <Grid item xs={1} md={2}>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              fullWidth
-              sx={{ display: "flex", height: "100%" }}
-            >
+          <Grid item xs={2} md={2} className={styles["button-wrapper"]}>
+            <Button type="submit" variant="contained" color="primary" fullWidth>
               Add
             </Button>
           </Grid>
         </Grid>
       </form>
-      <div className="list-wrapper">
+      <div className={styles["list-wrapper"]}>
         <List>
           {todos.map((todo) => (
-            <ListItem key={todo.id} dense sx={{ paddingX: 0 }}>
+            <ListItem key={todo.id} dense>
               <Checkbox
                 checked={todo.isCompleted}
                 onChange={(event) => statusChangedHandler(event, todo.id)}
@@ -154,4 +130,4 @@ const TodoListComponent = () => {
   );
 };
 
-export default TodoListComponent;
+export default TodoList;

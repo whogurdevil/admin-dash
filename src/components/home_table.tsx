@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {
   Table,
   TableHead,
@@ -12,7 +12,8 @@ import {
   Card,
   Button,
 } from "@mui/material";
-import { SelectAll, CheckBoxOutlineBlank } from "@mui/icons-material";
+import { CheckBoxOutlineBlank } from "@mui/icons-material";
+import styles from "@/styles/OrdersTable.module.scss"; // Import the SCSS module
 
 // Sample data
 const rows = [
@@ -83,16 +84,11 @@ const rows = [
     paymentStatus: "Pending",
   },
 ];
+
 export default function OrdersTable() {
   return (
-    <Card
-      sx={{
-        padding: 3,
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <Typography fontWeight={"bold"} variant="h6">
+    <Card className={styles.card}>
+      <Typography className={styles.heading} variant="h6">
         Order Status
       </Typography>
       <Table>

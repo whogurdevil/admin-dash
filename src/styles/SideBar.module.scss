@@ -1,0 +1,43 @@
+.menuIcon {
+  margin-left: 1rem;
+  margin-right: 1.5rem;
+  color: grey;
+}
+
+.createProjectButton {
+  margin: 0 0.5rem;
+  color: white;
+}
+
+.iconButtonContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.badge {
+  min-width: 10px;
+  height: 10px;
+  font-size: 10px;
+  padding: 0 4px;
+}
+.profileIconButton {
+  margin-left: auto; /* Push the profile icon button to the right */
+}
+
+.profileText {
+  margin-left: 0.5rem;
+}
+
+.listItemButton {
+  min-height: 48px;
+  justify-content: center;
+  padding: 0 1.5rem; /* Adjust padding as needed */
+}
+
+.listItemText {
+  opacity: 1; /* Ensure the text is visible when the drawer is open */
+}
+
+.mainContent {
+  flex-grow: 1; /* Make the main content area grow to fill available space */
+}

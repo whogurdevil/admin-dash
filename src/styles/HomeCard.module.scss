@@ -1,0 +1,48 @@
+.card {
+  padding: 24px;
+}
+
+.headerBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.addition {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.growth {
+  color: #00d25b;
+}
+
+.error {
+  color: #f44336; // Default MUI error color
+}
+
+.flexGrow {
+  flex-grow: 1;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.growthBorder {
+  border-color: #00d25b; // Corresponding success.main color
+  color: #00d25b;
+}
+
+.errorBorder {
+  border-color: #f44336; // Corresponding error.main color
+  color: #f44336;
+}

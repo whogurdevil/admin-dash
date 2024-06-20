@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { Box, Card, Grid, Typography } from "@mui/material";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Box, Card, Typography } from "@mui/material";
 import { Doughnut } from "react-chartjs-2";
 import TransferCard from "./transfer_card";
+import styles from "@/styles/TransactionHistoryCard.module.scss";
 
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const centerTextPlugin = {
@@ -33,28 +34,13 @@ const centerTextPlugin = {
   },
 };
 
-export default function DonutCard(props: any) {
+const TransactionHistoryCard = (props: any) => {
   return (
-    <Card
-      sx={{
-        padding: 3,
-        display: "flex",
-        height: "100%",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
-    >
-      <Typography variant="h6" fontWeight={"bold"}>
+    <Card className={styles.card}>
+      <Typography variant="h6" className={styles.title} fontWeight="bold">
         Transaction History
       </Typography>
-      <Box
-        sx={{
-          width: "280px",
-          display: "flex",
-          justifyContent: "center",
-          paddingY: 2,
-        }}
-      >
+      <Box className={styles["chart-container"]}>
         <Doughnut
           data={props.data}
           options={{ cutout: 95, responsive: true }}
@@ -66,4 +52,6 @@ export default function DonutCard(props: any) {
       ))}
     </Card>
   );
-}
+};
+
+export default TransactionHistoryCard;

@@ -23,6 +23,7 @@ import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MenuIcon from "@mui/icons-material/Menu";
 import { AccountCircle, MoreSharp, Window, Home } from "@mui/icons-material";
+import styles from "@/styles/SideBar.module.scss";
 import Menu from "@mui/material/Menu";
 import {
   MenuItem,
@@ -36,6 +37,9 @@ import {
   Divider,
   IconButton,
   Button,
+  TextField,
+  TextFieldProps,
+  Avatar,
 } from "@mui/material";
 const drawerWidth = 240;
 
@@ -82,13 +86,34 @@ const AppBar = styled(MuiAppBar, {
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
+}));
+
+const StyledTextField = styled((props: TextFieldProps) => (
+  <TextField {...props} />
+))(({ theme }) => ({
+  width: "40%",
+  marginRight: theme.spacing(2),
+
+  "& .MuiOutlinedInput-root": {
+    padding: theme.spacing(0.9),
+    height: "40px",
+
+    "& fieldset": {
+      borderColor: alpha(theme.palette.grey[500], 0.2),
+      borderRadius: 7,
+    },
+    "&:hover fieldset": {
+      borderColor: alpha(theme.palette.grey[500], 0.2),
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: alpha(theme.palette.grey[500], 0.2),
+    },
+  },
 }));
 
 const Drawer = styled(MuiDrawer, {
@@ -108,56 +133,13 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer() {
+export default function SideBar() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const toggleDrawer = () => {
+    setOpen((open) => !open);
   };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  const Search = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  }));
-  const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }));
-
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    "& .MuiInputBase-input": {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("md")]: {
-        width: "20ch",
-      },
-    },
-  }));
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -198,42 +180,47 @@ export default function MiniDrawer() {
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            fontWeight={"bold"}
+            sx={{
+              width: open ? drawerWidth : "auto",
+            }}
           >
-            Corona
+            {open ? "CORONA" : "C"}
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <IconButton
+            aria-label="open drawer"
+            onClick={toggleDrawer}
+            edge="start"
+            sx={{
+              marginLeft: 3,
+              marginRight: 5,
+            }}
+          >
+            <MenuIcon fontSize="small" sx={{ color: "grey" }} />
+          </IconButton>
+
+          <StyledTextField placeholder="Search projects" variant="outlined" />
+
           <Box sx={{ flexGrow: 1 }} />
 
-          <Button color="success" variant="contained" sx={{ marginX: 2 }}>
-            create new project
+          <Button
+            color="success"
+            variant="contained"
+            sx={{
+              marginX: 2,
+              color: "white",
+              display: { xs: "none", md: "flex" },
+            }}
+          >
+            + create new project
           </Button>
-          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
+          <Box sx={{ display: { xs: "none", md: "flex", sm: "none" }, gap: 2 }}>
             <IconButton
+              disableRipple
               size="small"
               aria-label="show 4 new mails"
               color="inherit"
@@ -242,6 +229,7 @@ export default function MiniDrawer() {
             </IconButton>
 
             <IconButton
+              disableRipple
               size="small"
               aria-label="show 4 new mails"
               color="inherit"
@@ -262,6 +250,7 @@ export default function MiniDrawer() {
               </Badge>
             </IconButton>
             <IconButton
+              disableRipple
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
@@ -282,7 +271,8 @@ export default function MiniDrawer() {
               </Badge>
             </IconButton>
             <IconButton
-              size="large"
+              disableRipple
+              size="small"
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
@@ -290,7 +280,11 @@ export default function MiniDrawer() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle fontSize="large" />
+              <Avatar
+                alt="H"
+                src="https://randomuser.me/api/portraits/men/3.jpg"
+              />
+              <Typography sx={{ marginLeft: 2 }}>Henry Klein ▼ </Typography>
             </IconButton>
           </Box>
         </Toolbar>
@@ -298,7 +292,7 @@ export default function MiniDrawer() {
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
             ) : (
@@ -306,55 +300,47 @@ export default function MiniDrawer() {
             )}
           </IconButton>
         </DrawerHeader>
-        <Divider />
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+        <List
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+          }}
+        >
+          <ListItem
+            disablePadding
+            sx={{
+              display: "block",
+            }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+                "&:hover": {
+                  borderRadius: "0 40px 40px 0", // Adjust the radius as needed
+                  marginRight: 2,
+                  borderLeftColor: "cyan",
+                },
+                "&.Mui-active": {
+                  borderRadius: "0 40px 40px 0",
+                  borderLeftColor: "cyan",
+                },
+              }}
+            >
+              <ListItemIcon
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <Home /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                <Home />
+              </ListItemIcon>
+              <ListItemText primary={"wow"} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1 }}>

@@ -1,0 +1,20 @@
+/* OpenProjectsCard.module.scss */
+
+.card {
+  padding: 24px; /* Adjust padding as needed */
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+
+  .MuiGrid-container {
+    margin-bottom: 16px;
+  }
+
+  .MuiTypography-h6 {
+    font-weight: bold;
+  }
+
+  .MuiTypography-colorGrey {
+    color: grey;
+  }
+}

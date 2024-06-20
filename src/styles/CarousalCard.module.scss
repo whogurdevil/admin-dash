@@ -1,0 +1,43 @@
+.card {
+  padding: 24px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.typography {
+  font-weight: bold;
+  padding-bottom: 16px;
+}
+
+.imageBox {
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.list {
+  width: 100%;
+  background-color: var(--background-default);
+  padding-top: 16px;
+}
+
+.listItem {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.secondaryText {
+  color: grey;
+}
+
+.timeText {
+  color: grey;
+}

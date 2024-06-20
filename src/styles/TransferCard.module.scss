@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  height: 80px;
+  padding: 12px;
+  width: 100%;
+  margin-top: 12px;
+  justify-content: space-between;
+  align-items: center;
+
+  > .left-box {
+    flex: 1;
+  }
+
+  > .right-box {
+    text-align: right;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .description {
+    color: grey;
+  }
+
+  .amount {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+}

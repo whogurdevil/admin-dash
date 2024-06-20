@@ -2,6 +2,7 @@
 import React from "react";
 import WorldMap from "react-svg-worldmap";
 import { CountryContext } from "react-svg-worldmap";
+import styles from "@/styles/WorldMapApp.module.scss"; // Import the SCSS module
 
 const stylingFunction = ({
   countryValue,
@@ -21,15 +22,15 @@ const stylingFunction = ({
     minValue: 1000,
   };
 };
+
 export default function App(props: any) {
-  // Convert props.data to the format required by react-svg-worldmap
   const data = props.data.map((item: any) => ({
     country: item.code,
     value: item.value,
   }));
 
   return (
-    <div className="App">
+    <div className={styles.app}>
       <WorldMap
         size="xl"
         data={data}

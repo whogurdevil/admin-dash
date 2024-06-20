@@ -1,3 +1,5 @@
+// OpenProjectsCard.jsx
+
 import React from "react";
 import { Grid, Card, Typography, Box } from "@mui/material";
 import ListTiles from "./list_tile";
@@ -8,6 +10,7 @@ import {
   Drafts,
   PieChart,
 } from "@mui/icons-material";
+import styles from "@/styles/OpenProjectsCard.module.scss"; // Import SCSS module for styling
 
 const listData = [
   {
@@ -54,20 +57,13 @@ const listData = [
 
 export default function OpenProjectsCard(props: any) {
   return (
-    <Card
-      sx={{
-        padding: 3,
-        display: "flex",
-        height: "100%",
-        flexDirection: "column",
-      }}
-    >
-      <Grid container flexDirection={"row"} justifyContent={"space-between"}>
-        <Typography variant="h6" fontWeight={"bold"}>
+    <Card className={styles.card}>
+      <Grid container flexDirection="row" justifyContent="space-between">
+        <Typography variant="h6" fontWeight="bold">
           Open Projects
         </Typography>
         <Box flexGrow={1} />
-        <Typography color={"grey"}>Your data status</Typography>
+        <Typography color="grey">Your data status</Typography>
       </Grid>
       {listData.map((data, index) => (
         <ListTiles
