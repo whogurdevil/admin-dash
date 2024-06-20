@@ -45,7 +45,7 @@ const theme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: "#12141a", // Bluish background color for Drawer
+          backgroundColor: "#191C24", // Bluish background color for Drawer
         },
       },
     },

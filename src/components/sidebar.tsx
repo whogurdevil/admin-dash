@@ -8,23 +8,31 @@ import {
   CSSObject,
   alpha,
 } from "@mui/material/styles";
-import { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
 import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MenuIcon from "@mui/icons-material/Menu";
-import { AccountCircle, MoreSharp, Window, Home } from "@mui/icons-material";
-import styles from "@/styles/SideBar.module.scss";
+import {
+  Window,
+  Home,
+  Speed,
+  LaptopWindows,
+  PlaylistPlay,
+  GridOn,
+  Contacts,
+  BarChart,
+  Security,
+  Article,
+} from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
+import useActiveLink from "@/hooks/active_link";
+import Link from "next/link";
 import {
   MenuItem,
   Box,
@@ -34,13 +42,14 @@ import {
   List,
   CssBaseline,
   Typography,
-  Divider,
   IconButton,
   Button,
   TextField,
   TextFieldProps,
   Avatar,
 } from "@mui/material";
+import { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -133,9 +142,36 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
+const menuItems = [
+  { text: "Home", icon: Speed, href: "/home", color: "secondary" },
+  {
+    text: "Basic UI Elements",
+    icon: LaptopWindows,
+    href: "/ui",
+    color: "warning",
+  },
+  {
+    text: "Form Elements",
+    icon: PlaylistPlay,
+    href: "/form-elements",
+    color: "error",
+  },
+  { text: "Tables", icon: GridOn, href: "/tables", color: "primary" },
+  { text: "Charts", icon: BarChart, href: "/charts", color: "success" },
+  { text: "Icons", icon: Contacts, href: "/icons", color: "secondary" },
+  { text: "User Pages", icon: Security, href: "/user-pages", color: "warning" },
+  {
+    text: "Documentation",
+    icon: Article,
+    href: "/documentation",
+    color: "error",
+  },
+];
+
 export default function SideBar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const activePath = useActiveLink();
 
   const toggleDrawer = () => {
     setOpen((open) => !open);
@@ -146,8 +182,7 @@ export default function SideBar() {
   };
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-    React.useState<null | HTMLElement>(null);
+  React.useState<null | HTMLElement>(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const handleMenuClose = () => {
@@ -175,6 +210,7 @@ export default function SideBar() {
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
+
   return (
     <>
       <CssBaseline />
@@ -307,45 +343,67 @@ export default function SideBar() {
             height: "100%",
           }}
         >
-          <ListItem
-            disablePadding
-            sx={{
-              display: "block",
-            }}
-          >
-            <ListItemButton
+          {menuItems.map((item) => (
+            <ListItem
+              key={item.text}
+              disablePadding
               sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  borderRadius: "0 40px 40px 0", // Adjust the radius as needed
-                  marginRight: 2,
-                  borderLeftColor: "cyan",
-                },
-                "&.Mui-active": {
-                  borderRadius: "0 40px 40px 0",
-                  borderLeftColor: "cyan",
-                },
+                display: "block",
               }}
             >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                <Home />
-              </ListItemIcon>
-              <ListItemText primary={"wow"} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
+              <Link href={item.href} passHref legacyBehavior>
+                <ListItemButton
+                  component="a"
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                    borderRadius: "0 40px 40px 0",
+                    marginRight: open ? 2 : 0,
+                    border: "0px 3px 0px 0px black",
+                    color: activePath === item.href ? "white" : "grey",
+
+                    borderLeft:
+                      activePath === item.href
+                        ? "3px solid #0090E7"
+                        : "3px solid black",
+                    backgroundColor:
+                      activePath === item.href ? "black" : "none",
+                    "&:hover": {
+                      borderRadius: "0 40px 40px 0",
+                      color: "white",
+                      backgroundColor: "black",
+                    },
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      display: "flex",
+                      backgroundColor: "#22242E",
+                      padding: 0.6,
+                      borderRadius: 10,
+                    }}
+                  >
+                    <item.icon color={item.color} fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.text}
+                    sx={{
+                      opacity: open ? 1 : 0,
+                      ml: open ? 1 : "auto",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+          ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1 }}>
-        <DrawerHeader />
-      </Box>
     </>
   );
 }
