@@ -28,7 +28,7 @@ const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          backgroundColor: "#191C24", // Change this to the desired bluish color
+          backgroundColor: "#12141a", // Change this to the desired bluish color
           // You can add more styles as needed
         },
       },
@@ -36,7 +36,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: "#191C24",
+          backgroundColor: "#12141a",
           boxShadow: "none", // Remove shadow
           elevation: 0,
         },
@@ -45,7 +45,7 @@ const theme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: "#191C24", // Bluish background color for Drawer
+          backgroundColor: "#12141a", // Bluish background color for Drawer
         },
       },
     },
