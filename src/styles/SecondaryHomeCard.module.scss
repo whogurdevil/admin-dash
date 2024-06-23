@@ -6,21 +6,31 @@
   font-weight: bold;
 }
 
-.headerBox {
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; // To space the text and icon apart
+  margin: 16px 0;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainText {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  margin: 16px 0;
 }
 
 .title {
   font-weight: bold;
-  margin-right: 8px;
+  margin-bottom: 8px;
 }
 
 .addition {
   font-weight: bold;
-  margin-right: 8px;
+  margin-bottom: 8px;
 }
 
 .growth {
@@ -31,14 +41,21 @@
   color: #f44336; // Default MUI error color
 }
 
-.flexGrow {
-  flex-grow: 1;
+.desc {
+  color: grey;
+}
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px; // Space between text and icon
 }
 
 .icon {
   display: flex;
   align-items: center;
-  margin-right: 8px;
+  font-size: 48px; // Ensure icon inherits the larger size from the inline style
 }
 
 .growthBorder {

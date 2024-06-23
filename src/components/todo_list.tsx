@@ -89,16 +89,23 @@ const TodoList = () => {
           <Grid item xs={10} md={10} className={styles["input-wrapper"]}>
             <TextField
               type="text"
-              label="What do you need to do today?"
               variant="outlined"
               value={inputValue}
               onChange={inputChangeHandler}
+              placeholder="Enter Text"
               required
               fullWidth
+              size="small"
             />
           </Grid>
           <Grid item xs={2} md={2} className={styles["button-wrapper"]}>
-            <Button type="submit" variant="contained" color="primary" fullWidth>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={styles.button}
+              fullWidth
+            >
               Add
             </Button>
           </Grid>

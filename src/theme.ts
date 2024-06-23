@@ -1,6 +1,5 @@
 "use client";
 import { createTheme } from "@mui/material/styles";
-import { blue } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
@@ -29,7 +28,6 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: "#12141a", // Change this to the desired bluish color
-          // You can add more styles as needed
         },
       },
     },
@@ -57,12 +55,34 @@ const theme = createTheme({
           },
           "&:focus": {
             outline: "none",
-            backgrounfColor: "transparent", // Remove focus outline
+            backgroundColor: "transparent", // Remove focus outline
           },
           "&:active": {
             backgroundColor: "transparent", // Remove active effect
             touchAction: "none", // Prevent weird effect on click
           },
+        },
+      },
+    },
+    MuiTableRow: {
+      styleOverrides: {
+        root: {
+          color: "grey", // Set the text color for TableRow
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          color: "grey", // Set the text color for TableCell
+        },
+      },
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          paddingLeft: 0, // Remove left padding
+          paddingRight: 0, // Remove right padding
         },
       },
     },

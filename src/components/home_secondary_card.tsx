@@ -8,23 +8,31 @@ export default function SecondaryHomeCard(props: any) {
       <Typography className={styles.topic} fontWeight="bold">
         {props.data.topic}
       </Typography>
-      <Box className={styles.headerBox}>
-        <Typography variant="h5" className={styles.title} fontWeight="bold">
-          {props.data.title}
-        </Typography>
-        <Typography
-          className={`${styles.addition} ${props.data.growth ? styles.growth : styles.error}`}
-        >
-          {props.data.addition}
-        </Typography>
-        <Box className={styles.flexGrow} />
-        <Icon
-          className={`${styles.icon} ${props.data.growth ? styles.growthBorder : styles.errorBorder}`}
-        >
-          <props.data.icon />
-        </Icon>
+      <Box className={styles.row}>
+        <Box className={styles.textBox}>
+          <Box className={styles.mainText}>
+            <Typography variant="h5" className={styles.title} fontWeight="bold">
+              {props.data.title}
+            </Typography>
+            <Typography
+              fontWeight={"bold"}
+              className={`${styles.addition} ${props.data.growth ? styles.growth : styles.error}`}
+            >
+              {props.data.addition}
+            </Typography>
+          </Box>
+          <Typography className={styles.desc}>{props.data.context} </Typography>
+        </Box>
+        <Box className={styles.iconBox}>
+          <Icon
+            color={props.data.color}
+            className={`${styles.icon} ${props.data.growth ? styles.growthBorder : styles.errorBorder}`}
+            style={{ fontSize: "48px" }} // Making the icon larger
+          >
+            <props.data.icon fontSize={"inherit"} />
+          </Icon>
+        </Box>
       </Box>
-      <Typography>{props.data.context} </Typography>
     </Card>
   );
 }

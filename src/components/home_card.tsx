@@ -11,24 +11,19 @@ export default function HomeCard(props: any) {
           {props.data.title}
         </Typography>
         <Typography
+          fontWeight={"bold"}
           className={`${styles.addition} ${props.data.growth ? styles.growth : styles.error}`}
         >
           {props.data.addition}
         </Typography>
         <Box className={styles.flexGrow} />
-        <Chip
-          variant="outlined"
-          icon={
-            props.data.growth ? (
-              <CallMade color="inherit" />
-            ) : (
-              <CallReceived color="inherit" />
-            )
-          }
+        <Box
           className={`${styles.chip} ${props.data.growth ? styles.growthBorder : styles.errorBorder}`}
-        />
+        >
+          {props.data.growth ? <CallMade /> : <CallReceived />}
+        </Box>
       </Box>
-      <Typography>{props.data.context} </Typography>
+      <Typography className={styles.desc}>{props.data.context} </Typography>
     </Card>
   );
 }

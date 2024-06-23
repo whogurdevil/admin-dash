@@ -35,14 +35,22 @@
   display: flex;
   align-items: center;
   margin-right: 8px;
+  padding: 7px;
+  border-radius: 10px;
 }
 
 .growthBorder {
   border-color: #00d25b; // Corresponding success.main color
   color: #00d25b;
+  background-color: rgba(0, 210, 91, 0.1); // Green with 50% transparency
 }
 
 .errorBorder {
   border-color: #f44336; // Corresponding error.main color
   color: #f44336;
+  background-color: rgba(244, 67, 54, 0.1); // Red with 50% transparency
+}
+
+.desc {
+  color: grey;
 }

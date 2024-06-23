@@ -17,7 +17,7 @@ export default function ListTile(props: any) {
         <ListItemAvatar className={styles.listItemAvatar}>
           <Box
             className={styles.avatarBox}
-            style={{ backgroundColor: `${props.data.color}.main` }}
+            sx={{ backgroundColor: `${props.data.color}.main` }}
           >
             <props.data.icon className={styles.icon} />
           </Box>

@@ -43,7 +43,15 @@ const TransactionHistoryCard = (props: any) => {
       <Box className={styles["chart-container"]}>
         <Doughnut
           data={props.data}
-          options={{ cutout: 95, responsive: true }}
+          options={{
+            cutout: 95,
+            responsive: true,
+            plugins: {
+              legend: {
+                display: false, // Disable legend
+              },
+            },
+          }}
           plugins={[centerTextPlugin]}
         />
       </Box>

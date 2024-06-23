@@ -2,8 +2,31 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
+  color: grey;
 }
 
-.heading {
-  font-weight: bold;
+.text {
+  color: grey;
+}
+
+.tableContainer {
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.table {
+  color: grey;
+  min-width: 800px; /* Ensure table has a minimum width */
+}
+
+.tableCell,
+.tableTypography {
+  color: grey;
+}
+
+.tableRow {
+  color: grey;
+}
+
+.statusButton {
+  width: 100px; /* Set a fixed minimum width for the buttons */
 }

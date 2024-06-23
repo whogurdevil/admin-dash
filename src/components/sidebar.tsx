@@ -10,29 +10,13 @@ import {
 } from "@mui/material/styles";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MenuIcon from "@mui/icons-material/Menu";
-import {
-  Window,
-  Home,
-  Speed,
-  LaptopWindows,
-  PlaylistPlay,
-  GridOn,
-  Contacts,
-  BarChart,
-  Security,
-  Article,
-} from "@mui/icons-material";
+import { Window } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
-import useActiveLink from "@/hooks/active_link";
-import Link from "next/link";
+import { SidebarList } from "./sidebar_list";
 import {
   MenuItem,
   Box,
@@ -105,9 +89,18 @@ const AppBar = styled(MuiAppBar, {
 const StyledTextField = styled((props: TextFieldProps) => (
   <TextField {...props} />
 ))(({ theme }) => ({
-  width: "40%",
-  marginRight: theme.spacing(2),
+  marginRight: "100px",
+  [theme.breakpoints.up("xs")]: {
+    display: "none",
+  },
+  [theme.breakpoints.up("sm")]: {
+    display: "none",
+  },
+  [theme.breakpoints.up("md")]: {
+    display: "flex",
+  },
 
+  width: "60%",
   "& .MuiOutlinedInput-root": {
     padding: theme.spacing(0.9),
     height: "40px",
@@ -142,37 +135,9 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-const menuItems = [
-  { text: "Home", icon: Speed, href: "/home", color: "secondary" },
-  {
-    text: "Basic UI Elements",
-    icon: LaptopWindows,
-    href: "/ui",
-    color: "warning",
-  },
-  {
-    text: "Form Elements",
-    icon: PlaylistPlay,
-    href: "/form-elements",
-    color: "error",
-  },
-  { text: "Tables", icon: GridOn, href: "/tables", color: "primary" },
-  { text: "Charts", icon: BarChart, href: "/charts", color: "success" },
-  { text: "Icons", icon: Contacts, href: "/icons", color: "secondary" },
-  { text: "User Pages", icon: Security, href: "/user-pages", color: "warning" },
-  {
-    text: "Documentation",
-    icon: Article,
-    href: "/documentation",
-    color: "error",
-  },
-];
-
 export default function SideBar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const activePath = useActiveLink();
-
   const toggleDrawer = () => {
     setOpen((open) => !open);
   };
@@ -249,12 +214,16 @@ export default function SideBar() {
             sx={{
               marginX: 2,
               color: "white",
-              display: { xs: "none", md: "flex" },
+              display: { xs: "none", md: "flex", sm: "none" },
+              whiteSpace: "nowrap",
+              width: "fit-content",
+              minWidth: "180px", // Adjust this value as needed
+              paddingX: 4,
             }}
           >
-            + create new project
+            <Typography>{"+ Create New Project"}</Typography>
           </Button>
-          <Box sx={{ display: { xs: "none", md: "flex", sm: "none" }, gap: 2 }}>
+          <Box sx={{ display: { xs: "flex", md: "flex", sm: "flex" }, gap: 2 }}>
             <IconButton
               disableRipple
               size="small"
@@ -320,7 +289,18 @@ export default function SideBar() {
                 alt="H"
                 src="https://randomuser.me/api/portraits/men/3.jpg"
               />
-              <Typography sx={{ marginLeft: 2 }}>Henry Klein ▼ </Typography>
+              <Typography
+                sx={{
+                  marginLeft: 2,
+                  display: { xs: "none", md: "flex", sm: "flex" },
+                  maxWidth: "150px", // Set maximum width to prevent overflow
+                  overflow: "hidden", // Ensure overflow text is hidden
+                  textOverflow: "ellipsis", // Add ellipsis for overflow text
+                  whiteSpace: "nowrap", // Prevent text from wrapping to the next line
+                }}
+              >
+                Henry Klein ▼
+              </Typography>
             </IconButton>
           </Box>
         </Toolbar>
@@ -336,73 +316,7 @@ export default function SideBar() {
             )}
           </IconButton>
         </DrawerHeader>
-        <List
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            height: "100%",
-          }}
-        >
-          {menuItems.map((item) => (
-            <ListItem
-              key={item.text}
-              disablePadding
-              sx={{
-                display: "block",
-              }}
-            >
-              <Link href={item.href} passHref legacyBehavior>
-                <ListItemButton
-                  component="a"
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                    borderRadius: "0 40px 40px 0",
-                    marginRight: open ? 2 : 0,
-                    border: "0px 3px 0px 0px black",
-                    color: activePath === item.href ? "white" : "grey",
-
-                    borderLeft:
-                      activePath === item.href
-                        ? "3px solid #0090E7"
-                        : "3px solid black",
-                    backgroundColor:
-                      activePath === item.href ? "black" : "none",
-                    "&:hover": {
-                      borderRadius: "0 40px 40px 0",
-                      color: "white",
-                      backgroundColor: "black",
-                    },
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      justifyContent: "center",
-                      alignItems: "center",
-                      display: "flex",
-                      backgroundColor: "#22242E",
-                      padding: 0.6,
-                      borderRadius: 10,
-                    }}
-                  >
-                    <item.icon color={item.color} fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item.text}
-                    sx={{
-                      opacity: open ? 1 : 0,
-                      ml: open ? 1 : "auto",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  />
-                </ListItemButton>
-              </Link>
-            </ListItem>
-          ))}
-        </List>
+        <SidebarList open={open} />
       </Drawer>
     </>
   );

@@ -9,6 +9,8 @@ import {
   CurrencyRupee,
   BusinessCenterOutlined,
   TvOutlined,
+  HomeRepairService,
+  HomeRepairServiceOutlined,
 } from "@mui/icons-material";
 import SecondaryHomeCard from "@/components/home_secondary_card";
 import OrdersTable from "@/components/home_table";
@@ -20,28 +22,28 @@ const cardData = [
   {
     id: 0,
     title: "$12.34",
-    addition: "+3.5%",
+    addition: " +3.5%",
     context: "Potential Growth",
     growth: true,
   },
   {
     id: 1,
     title: "$17.34",
-    addition: "+11%",
+    addition: " +11%",
     context: "Revenue Current",
     growth: true,
   },
   {
     id: 2,
     title: "$12.34",
-    addition: "-2.4%",
+    addition: " -2.4%",
     context: "Daily Income",
     growth: false,
   },
   {
     id: 3,
     title: "$31.54",
-    addition: "+3.5%",
+    addition: " +3.5%",
     context: "Expense Current",
     growth: true,
   },
@@ -65,7 +67,7 @@ const donutCardData = [
     amount: "$236",
   },
   {
-    title: "Transfer to` stripe",
+    title: "Transfer to stripe",
     desc: "07 Jan 2019, 09:12AM",
     amount: "$593",
   },
@@ -77,7 +79,8 @@ const secondaryCardData = [
     context: "11.38% since last month",
     addition: "+3.5%",
     growth: true,
-    icon: CurrencyRupee,
+    icon: HomeRepairServiceOutlined,
+    color: "primary",
   },
   {
     topic: "Sales",
@@ -86,6 +89,7 @@ const secondaryCardData = [
     addition: "+8.3%",
     growth: true,
     icon: BusinessCenterOutlined,
+    color: "success",
   },
   {
     topic: "Purchase",
@@ -94,6 +98,7 @@ const secondaryCardData = [
     addition: "-2.1%",
     growth: false,
     icon: TvOutlined,
+    color: "error",
   },
 ];
 

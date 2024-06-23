@@ -91,73 +91,101 @@ export default function OrdersTable() {
       <Typography className={styles.heading} variant="h6">
         Order Status
       </Typography>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>
-              <Typography variant="h6">Actions</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h6">Client Name</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h6">Order No</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h6">Product Cost</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h6">Project</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h6">Payment Mode</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h6">Start Date</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h6">Payment Status</Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>
-                <IconButton>
-                  <CheckBoxOutlineBlank />
-                </IconButton>
+      <div className={styles.tableContainer}>
+        <Table className={styles.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell className={styles.tableCell}>
+                <Typography variant="h6" className={styles.tableTypography}>
+                  Actions
+                </Typography>
               </TableCell>
-              <TableCell>
-                <Grid container spacing={2} alignItems="center">
-                  <Grid item>
-                    <Avatar alt={row.clientName} src={row.avatarSrc} />
-                  </Grid>
-                  <Grid item>
-                    <Typography>{row.clientName}</Typography>
-                  </Grid>
-                </Grid>
+              <TableCell className={styles.tableCell}>
+                <Typography variant="h6" className={styles.tableTypography}>
+                  Client Name
+                </Typography>
               </TableCell>
-              <TableCell>{row.orderNo}</TableCell>
-              <TableCell>{row.productCost}</TableCell>
-              <TableCell>{row.project}</TableCell>
-              <TableCell>{row.paymentMode}</TableCell>
-              <TableCell>{row.startDate}</TableCell>
-              <TableCell>
-                {row.paymentStatus === "Paid" ? (
-                  <Button variant={"outlined"} color="success">
-                    Approved
-                  </Button>
-                ) : (
-                  <Button variant={"outlined"} color="warning">
-                    Pending
-                  </Button>
-                )}
+              <TableCell className={styles.tableCell}>
+                <Typography variant="h6" className={styles.tableTypography}>
+                  Order No
+                </Typography>
+              </TableCell>
+              <TableCell className={styles.tableCell}>
+                <Typography variant="h6" className={styles.tableTypography}>
+                  Product Cost
+                </Typography>
+              </TableCell>
+              <TableCell className={styles.tableCell}>
+                <Typography variant="h6" className={styles.tableTypography}>
+                  Project
+                </Typography>
+              </TableCell>
+              <TableCell className={styles.tableCell}>
+                <Typography variant="h6" className={styles.tableTypography}>
+                  Payment Mode
+                </Typography>
+              </TableCell>
+              <TableCell className={styles.tableCell}>
+                <Typography variant="h6" className={styles.tableTypography}>
+                  Start Date
+                </Typography>
+              </TableCell>
+              <TableCell className={styles.tableCell}>
+                <Typography variant="h6" className={styles.tableTypography}>
+                  Payment Status
+                </Typography>
               </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id} className={styles.tableRow}>
+                <TableCell className={styles.tableCell}>
+                  <IconButton>
+                    <CheckBoxOutlineBlank />
+                  </IconButton>
+                </TableCell>
+                <TableCell className={styles.tableCell}>
+                  <Grid container spacing={2} alignItems="center">
+                    <Grid item>
+                      <Avatar alt={row.clientName} src={row.avatarSrc} />
+                    </Grid>
+                    <Grid item>
+                      <Typography className={styles.tableTypography}>
+                        {row.clientName}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </TableCell>
+                <TableCell className={styles.tableCell}>
+                  {row.orderNo}
+                </TableCell>
+                <TableCell className={styles.tableCell}>
+                  {row.productCost}
+                </TableCell>
+                <TableCell className={styles.tableCell}>
+                  {row.project}
+                </TableCell>
+                <TableCell className={styles.tableCell}>
+                  {row.paymentMode}
+                </TableCell>
+                <TableCell className={styles.tableCell}>
+                  {row.startDate}
+                </TableCell>
+                <TableCell className={styles.tableCell}>
+                  <Button
+                    variant={"outlined"}
+                    color={row.paymentStatus === "Paid" ? "success" : "warning"}
+                    className={styles.statusButton}
+                  >
+                    {row.paymentStatus === "Paid" ? "Approved" : "Pending"}
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </Card>
   );
 }
