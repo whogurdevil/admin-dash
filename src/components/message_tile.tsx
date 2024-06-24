@@ -10,7 +10,7 @@ import styles from "@/styles/MessageTile.module.scss"; // Import the SCSS module
 
 export default function MessageTile(props: any) {
   return (
-    <List className={styles.list}>
+    <List className={styles.list} sx={{ backgroundColor: "#1d1f25" }}>
       <ListItem alignItems="flex-start" className={styles.listItem}>
         <ListItemAvatar>
           <Avatar alt={props.data.name} src={props.data.avatarImage} />

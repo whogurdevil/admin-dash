@@ -10,6 +10,10 @@ import {
   BarChart,
   Security,
   Article,
+  MoreVert,
+  Settings,
+  Info,
+  Today,
 } from "@mui/icons-material";
 import {
   Avatar,
@@ -20,8 +24,15 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  IconButton,
+  Menu,
+  MenuItem,
+  Divider,
+  Collapse,
 } from "@mui/material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Link from "next/link";
+import React, { useState } from "react";
 
 const menuItems = [
   { text: "Dashboard", icon: Speed, href: "/home", color: "secondary" },
@@ -30,6 +41,11 @@ const menuItems = [
     icon: LaptopWindows,
     href: "/ui",
     color: "warning",
+    submenu: [
+      { text: "Buttons", href: "/ui/buttons" },
+      { text: "Pages", href: "/ui/pages" },
+      { text: "Typography", href: "/ui/typography" },
+    ],
   },
   {
     text: "Form Elements",
@@ -49,11 +65,23 @@ const menuItems = [
   },
 ];
 
-import React from "react";
-
 export const SidebarList = (props: any) => {
-  console.log(props);
   const activePath = useActiveLink();
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [openSubMenu, setOpenSubMenu] = useState(false);
+  const open = Boolean(anchorEl);
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleSubMenuToggle = () => {
+    setOpenSubMenu(!openSubMenu);
+  };
 
   return (
     <List
@@ -70,6 +98,8 @@ export const SidebarList = (props: any) => {
           borderRadius: "0 40px 40px 0",
           border: "0px 3px 0px 0px black",
           paddingLeft: 2,
+          display: "flex",
+          alignItems: "center",
         }}
       >
         <ListItemAvatar>
@@ -90,6 +120,50 @@ export const SidebarList = (props: any) => {
             </Typography>
           }
         />
+        {props.open && (
+          <>
+            <IconButton
+              sx={{ marginLeft: "auto" }}
+              edge="end"
+              aria-label="more"
+              onClick={handleMenuOpen}
+            >
+              <MoreVert />
+            </IconButton>
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleMenuClose}
+              PaperProps={{
+                style: {
+                  maxHeight: 48 * 4.5,
+                  width: "20ch",
+                },
+              }}
+            >
+              <MenuItem onClick={handleMenuClose}>
+                <ListItemIcon>
+                  <Settings color="primary" fontSize="small" />
+                </ListItemIcon>
+                Account Settings
+              </MenuItem>
+              <Divider />
+              <MenuItem onClick={handleMenuClose}>
+                <ListItemIcon>
+                  <Info color="secondary" fontSize="small" />
+                </ListItemIcon>
+                Logout
+              </MenuItem>
+              <Divider />
+              <MenuItem onClick={handleMenuClose}>
+                <ListItemIcon>
+                  <Today color={"success"} fontSize="small" />
+                </ListItemIcon>
+                To-do list
+              </MenuItem>
+            </Menu>
+          </>
+        )}
       </ListItem>
       <ListItem
         sx={{
@@ -114,62 +188,153 @@ export const SidebarList = (props: any) => {
       </ListItem>
 
       {menuItems.map((item) => (
-        <ListItem
-          key={item.text}
-          disablePadding
-          sx={{
-            display: "block",
-          }}
-        >
-          <Link href={item.href} passHref legacyBehavior>
-            <ListItemButton
-              component="a"
-              sx={{
-                minHeight: 48,
-                justifyContent: props.open ? "initial" : "center",
-                px: 2.5,
-                borderRadius: "0 40px 40px 0",
-                marginRight: props.open ? 2 : 0,
-                border: "0px 3px 0px 0px black",
-                color: activePath === item.href ? "white" : "grey",
-
-                borderLeft:
-                  activePath === item.href
-                    ? "3px solid #0090E7"
-                    : "3px solid black",
-                backgroundColor: activePath === item.href ? "black" : "none",
-                "&:hover": {
-                  borderRadius: "0 40px 40px 0",
-                  color: "white",
-                  backgroundColor: "black",
-                },
-              }}
-            >
-              <ListItemIcon
+        <React.Fragment key={item.text}>
+          {item.submenu ? (
+            <>
+              <ListItem
+                disablePadding
                 sx={{
-                  minWidth: 0,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  display: "flex",
-                  backgroundColor: "#22242E",
-                  padding: 0.6,
-                  borderRadius: 10,
+                  display: "block",
                 }}
               >
-                <item.icon color={item.color} fontSize="small" />
-              </ListItemIcon>
-              <ListItemText
-                primary={item.text}
-                sx={{
-                  opacity: props.open ? 1 : 0,
-                  ml: props.open ? 1 : "auto",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              />
-            </ListItemButton>
-          </Link>
-        </ListItem>
+                <ListItemButton
+                  onClick={handleSubMenuToggle}
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: props.open ? "initial" : "center",
+                    px: 2.5,
+                    borderRadius: "0 40px 40px 0",
+                    marginRight: props.open ? 2 : 0,
+                    border: "0px 3px 0px 0px black",
+                    color: activePath === item.href ? "white" : "grey",
+                    borderLeft:
+                      activePath === item.href
+                        ? "3px solid #0090E7"
+                        : "3px solid black",
+                    backgroundColor:
+                      activePath === item.href ? "black" : "none",
+                    "&:hover": {
+                      borderRadius: "0 40px 40px 0",
+                      color: "white",
+                      backgroundColor: "black",
+                    },
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      display: "flex",
+                      backgroundColor: "#22242E",
+                      padding: 0.6,
+                      borderRadius: 10,
+                    }}
+                  >
+                    <item.icon color={item.color} fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.text}
+                    sx={{
+                      opacity: props.open ? 1 : 0,
+                      ml: props.open ? 1 : "auto",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  />
+                  {openSubMenu ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+              </ListItem>
+              <Collapse in={openSubMenu} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  {item.submenu.map((subitem) => (
+                    <ListItemButton
+                      key={subitem.text}
+                      component={Link}
+                      href={subitem.href}
+                      sx={{
+                        pl: 4,
+                        borderRadius: "0 40px 40px 0",
+                        marginRight: props.open ? 2 : 0,
+                        border: "0px 3px 0px 0px black",
+                        "&:hover": {
+                          color: "white",
+                          backgroundColor: "black",
+                        },
+                      }}
+                    >
+                      <ListItemText
+                        primary={subitem.text}
+                        sx={{
+                          opacity: props.open ? 1 : 0,
+                          ml: props.open ? 1 : "auto",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      />
+                    </ListItemButton>
+                  ))}
+                </List>
+              </Collapse>
+            </>
+          ) : (
+            <ListItem
+              disablePadding
+              sx={{
+                display: "block",
+              }}
+            >
+              <Link href={item.href} passHref legacyBehavior>
+                <ListItemButton
+                  component="a"
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: props.open ? "initial" : "center",
+                    px: 2.5,
+                    borderRadius: "0 40px 40px 0",
+                    marginRight: props.open ? 2 : 0,
+                    border: "0px 3px 0px 0px black",
+                    color: activePath === item.href ? "white" : "grey",
+                    borderLeft:
+                      activePath === item.href
+                        ? "3px solid #0090E7"
+                        : "3px solid black",
+                    backgroundColor:
+                      activePath === item.href ? "black" : "none",
+                    "&:hover": {
+                      borderRadius: "0 40px 40px 0",
+                      color: "white",
+                      backgroundColor: "black",
+                    },
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      display: "flex",
+                      backgroundColor: "#22242E",
+                      padding: 0.6,
+                      borderRadius: 10,
+                    }}
+                  >
+                    <item.icon color={item.color} fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.text}
+                    sx={{
+                      opacity: props.open ? 1 : 0,
+                      ml: props.open ? 1 : "auto",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+          )}
+        </React.Fragment>
       ))}
     </List>
   );

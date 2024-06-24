@@ -112,7 +112,7 @@ const TodoList = () => {
         </Grid>
       </form>
       <div className={styles["list-wrapper"]}>
-        <List>
+        <List sx={{ backgroundColor: "#1d1f25" }}>
           {todos.map((todo) => (
             <ListItem key={todo.id} dense>
               <Checkbox

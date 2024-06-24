@@ -1,3 +1,4 @@
+// theme.ts
 "use client";
 import { createTheme } from "@mui/material/styles";
 
@@ -27,7 +28,7 @@ const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          backgroundColor: "#12141a", // Change this to the desired bluish color
+          backgroundColor: "#12141a",
         },
       },
     },
@@ -35,7 +36,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: "#12141a",
-          boxShadow: "none", // Remove shadow
+          boxShadow: "none",
           elevation: 0,
         },
       },
@@ -43,7 +44,7 @@ const theme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: "#12141a", // Bluish background color for Drawer
+          backgroundColor: "#12141a",
         },
       },
     },
@@ -51,15 +52,15 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "&:hover": {
-            backgroundColor: "transparent", // Remove hover effect
+            backgroundColor: "transparent",
           },
           "&:focus": {
             outline: "none",
-            backgroundColor: "transparent", // Remove focus outline
+            backgroundColor: "transparent",
           },
           "&:active": {
-            backgroundColor: "transparent", // Remove active effect
-            touchAction: "none", // Prevent weird effect on click
+            backgroundColor: "transparent",
+            touchAction: "none",
           },
         },
       },
@@ -67,22 +68,38 @@ const theme = createTheme({
     MuiTableRow: {
       styleOverrides: {
         root: {
-          color: "grey", // Set the text color for TableRow
+          color: "grey",
         },
       },
     },
     MuiTableCell: {
       styleOverrides: {
         root: {
-          color: "grey", // Set the text color for TableCell
+          color: "grey",
         },
       },
     },
     MuiListItem: {
       styleOverrides: {
         root: {
-          paddingLeft: 0, // Remove left padding
-          paddingRight: 0, // Remove right padding
+          paddingLeft: 0,
+          paddingRight: 0,
+        },
+      },
+    },
+
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#12141a",
+        },
+      },
+    },
+
+    MuiList: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#12141a",
         },
       },
     },

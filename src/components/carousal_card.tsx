@@ -98,7 +98,7 @@ export default function CarousalCard() {
           ))}
         </Carousel>
       )}
-      <List className={styles.list}>
+      <List className={styles.list} sx={{ backgroundColor: "#1d1f25" }}>
         <ListItem alignItems="flex-start" className={styles.listItem}>
           <ListItemAvatar>
             <Avatar

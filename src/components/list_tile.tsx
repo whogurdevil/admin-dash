@@ -10,34 +10,50 @@ import Avatar from "@mui/material/Avatar";
 import { Typography, Box, Grid } from "@mui/material";
 import styles from "@/styles/ListTile.module.scss"; // Import the SCSS module
 
-export default function ListTile(props: any) {
+interface ListTileProps {
+  data: {
+    color: string; // Assuming this is a color string like "#12141a"
+    icon: React.ElementType;
+    title: string;
+    desc: string;
+    time: string;
+    tasks: string;
+  };
+  lastItem?: boolean;
+  backgroundColor?: string; // New prop for background color
+}
+
+const ListTile: React.FC<ListTileProps> = ({
+  data,
+  lastItem = false, // Default to white if no backgroundColor prop is provided
+}) => {
   return (
-    <List className={styles.list}>
+    <List className={styles.list} sx={{ backgroundColor: "#1d1f25" }}>
       <ListItem className={styles.listItem}>
         <ListItemAvatar className={styles.listItemAvatar}>
           <Box
             className={styles.avatarBox}
-            sx={{ backgroundColor: `${props.data.color}.main` }}
+            sx={{ backgroundColor: `${data.color}.main` }}
           >
-            <props.data.icon className={styles.icon} />
+            <data.icon className={styles.icon} />
           </Box>
         </ListItemAvatar>
         <Grid flexGrow={1}>
           <Typography fontWeight={"bold"} className={styles.title}>
-            {props.data.title}
+            {data.title}
           </Typography>
-          <Typography className={styles.description}>
-            {props.data.desc}
-          </Typography>
+          <Typography className={styles.description}>{data.desc}</Typography>
         </Grid>
         <Box>
           <Typography className={styles.time} textAlign={"right"}>
-            {props.data.time}
+            {data.time}
           </Typography>
-          <Typography className={styles.tasks}>{props.data.tasks}</Typography>
+          <Typography className={styles.tasks}>{data.tasks}</Typography>
         </Box>
       </ListItem>
-      {!props.lastItem && <Divider />}
+      {!lastItem && <Divider />}
     </List>
   );
-}
+};
+
+export default ListTile;
