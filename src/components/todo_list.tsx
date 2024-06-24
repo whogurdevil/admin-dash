@@ -14,8 +14,8 @@ import {
   Typography,
   Grid,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import styles from "@/styles/TodoList.module.scss";
+import { DisabledByDefault } from "@mui/icons-material";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([
@@ -119,14 +119,23 @@ const TodoList = () => {
                 checked={todo.isCompleted}
                 onChange={(event) => statusChangedHandler(event, todo.id)}
               />
-              <ListItemText primary={todo.task} />
+              <ListItemText
+                primary={todo.task}
+                className={styles.taskText}
+                sx={{
+                  textDecoration: todo.isCompleted ? "line-through" : "none",
+                }}
+              />
               <ListItemSecondaryAction>
                 <IconButton
                   edge="end"
                   aria-label="delete"
                   onClick={() => removeTodo(todo.id)}
                 >
-                  <DeleteIcon />
+                  <DisabledByDefault
+                    color={todo.isCompleted ? "primary" : "inherit"}
+                    fontSize="small"
+                  />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>

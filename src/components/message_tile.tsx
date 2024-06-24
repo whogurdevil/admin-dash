@@ -18,12 +18,12 @@ export default function MessageTile(props: any) {
         <ListItemText
           primary={props.data.name}
           secondary={
-            <Typography className={styles.secondaryText}>
+            <Typography fontSize={"small"} className={styles.secondaryText}>
               {props.data.message}
             </Typography>
           }
         />
-        <Typography className={styles.secondaryText}>
+        <Typography fontSize={"small"} className={styles.time}>
           {props.data.time}
         </Typography>
       </ListItem>

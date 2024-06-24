@@ -23,12 +23,12 @@ const centerTextPlugin = {
     ctx.font = "bolder 20px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("$1200", width / 2, height / 2 + 10);
+    ctx.fillText("$1200", width / 2, height / 2 - 20);
 
     // Draw small and normal text
     ctx.fillStyle = "grey";
     ctx.font = "normal 12px Arial";
-    ctx.fillText("Total", width / 2, height / 2 + 50);
+    ctx.fillText("Total", width / 2, height / 2 + 30);
 
     ctx.restore();
   },

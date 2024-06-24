@@ -30,18 +30,6 @@ const messagesData = [
     time: "55 minutes ago",
     message: "Looking forward to our call.",
   },
-  {
-    avatarImage: "https://randomuser.me/api/portraits/men/34.jpg",
-    name: "David Wilson",
-    time: "2 hours ago",
-    message: "Project deadline is approaching.",
-  },
-  {
-    avatarImage: "https://randomuser.me/api/portraits/women/34.jpg",
-    name: "Sophia Lee",
-    time: "3 hours ago",
-    message: "Please check your email for updates.",
-  },
 ];
 
 export default function MessageCard() {

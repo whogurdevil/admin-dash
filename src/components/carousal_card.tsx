@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { Card, Grid, Typography, Box, Button, IconButton } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
@@ -9,11 +8,28 @@ import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
+import { styled } from "@mui/material/styles";
 import {
   ArrowCircleLeftRounded,
   ArrowCircleRightRounded,
 } from "@mui/icons-material";
 import styles from "@/styles/CarousalCard.module.scss"; // Import the SCSS module
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 15,
+  marginTop: 10,
+
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor:
+      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    backgroundColor: theme.palette.mode === "light" ? "#00D25B" : "#00D25B",
+  },
+}));
 
 const imageUrls = [
   "https://picsum.photos/id/13/1800/1667.jpg",
@@ -93,14 +109,28 @@ export default function CarousalCard() {
           <ListItemText
             primary="CeeCee Bass"
             secondary={
-              <Typography className={styles.secondaryText}>
+              <Typography fontSize={"small"} className={styles.secondaryText}>
                 Well it seems to working right now.
               </Typography>
             }
           />
-          <Typography className={styles.timeText}>4 hours ago</Typography>
+          <Typography fontSize={"small"} className={styles.timeText}>
+            4 hours ago
+          </Typography>
         </ListItem>
-        <Divider />
+        <ListItem alignItems="flex-start" className={styles.listItem}>
+          <ListItemText
+            color="grey"
+            primary={
+              <Typography fontSize={"small"} className={styles.secondaryText}>
+                Well it seems to working right now.
+              </Typography>
+            }
+            secondary={
+              <BorderLinearProgress variant="determinate" value={50} />
+            }
+          />
+        </ListItem>
       </List>
     </Card>
   );

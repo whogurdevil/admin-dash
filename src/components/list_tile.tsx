@@ -23,7 +23,9 @@ export default function ListTile(props: any) {
           </Box>
         </ListItemAvatar>
         <Grid flexGrow={1}>
-          <Typography className={styles.title}>{props.data.title}</Typography>
+          <Typography fontWeight={"bold"} className={styles.title}>
+            {props.data.title}
+          </Typography>
           <Typography className={styles.description}>
             {props.data.desc}
           </Typography>
