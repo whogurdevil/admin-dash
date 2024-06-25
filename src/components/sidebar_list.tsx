@@ -1,7 +1,5 @@
 import useActiveLink from "@/hooks/active_link";
 import {
-  Window,
-  Home,
   Speed,
   LaptopWindows,
   PlaylistPlay,
@@ -43,7 +41,7 @@ const menuItems = [
     color: "warning",
     submenu: [
       { text: "Buttons", href: "/ui/buttons" },
-      { text: "Pages", href: "/ui/pages" },
+      { text: "Dropdowns", href: "/ui/dropdowns" },
       { text: "Typography", href: "/ui/typography" },
     ],
   },

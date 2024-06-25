@@ -1,0 +1,34 @@
+// ButtonsCard.module.scss
+
+.card {
+  padding: 16px;
+  margin: 16px;
+}
+
+.heading {
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.btnColor {
+  color: #1976d2; // Adjust color to match the primary color or customize as needed
+}
+
+.gridContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gridItem {
+  margin: 8px;
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  margin-top: 4px;
+}

@@ -2,9 +2,6 @@ import * as React from "react";
 import {
   styled,
   alpha,
-  useTheme,
-  Theme,
-  CSSObject,
 } from "@mui/material/styles";
 import {
   AppBar as MuiAppBar,
@@ -20,13 +17,11 @@ import {
   Menu,
   MenuItem,
   Divider,
-  ListItem,
   List,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import AccountCircle from "@mui/icons-material/AccountCircle"; // Icon for circular button
 import { Logout, Settings } from "@mui/icons-material";
 
 const drawerWidth = 240;
