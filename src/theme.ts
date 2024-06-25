@@ -23,6 +23,9 @@ const theme = createTheme({
     background: {
       default: "#000000",
     },
+    info: {
+      main: "#ffffff",
+    },
   },
   components: {
     MuiCard: {

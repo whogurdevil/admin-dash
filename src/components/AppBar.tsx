@@ -263,7 +263,7 @@ const AppBarComponent: React.FC<AppBarProps> = ({
             paddingX: 4,
           }}
         >
-          <Typography>{"+ Create New Project"}</Typography>
+          <Typography fontSize={"small"}>{"+ Create New Project"}</Typography>
         </Button>
         <Box sx={{ display: { xs: "flex", md: "flex", sm: "flex" }, gap: 2 }}>
           <Divider orientation="vertical" flexItem />

@@ -65,6 +65,15 @@ const menuItems = [
   },
 ];
 
+const getTextBeforeSecondSlash = (path) => {
+  const parts = path.split("/");
+  if (parts.length >= 2) {
+    let result = `/${parts[1]}`;
+    return result;
+  }
+  return path;
+};
+
 export const SidebarList = (props: any) => {
   const activePath = useActiveLink();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -130,17 +139,7 @@ export const SidebarList = (props: any) => {
             >
               <MoreVert />
             </IconButton>
-            <Menu
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleMenuClose}
-              PaperProps={{
-                style: {
-                  maxHeight: 48 * 4.5,
-                  width: "20ch",
-                },
-              }}
-            >
+            <Menu anchorEl={anchorEl} open={open} onClose={handleMenuClose}>
               <MenuItem onClick={handleMenuClose}>
                 <ListItemIcon>
                   <Settings color="primary" fontSize="small" />
@@ -195,6 +194,7 @@ export const SidebarList = (props: any) => {
                 disablePadding
                 sx={{
                   display: "block",
+                  paddingRight: 0,
                 }}
               >
                 <ListItemButton
@@ -206,13 +206,18 @@ export const SidebarList = (props: any) => {
                     borderRadius: "0 40px 40px 0",
                     marginRight: props.open ? 2 : 0,
                     border: "0px 3px 0px 0px black",
-                    color: activePath === item.href ? "white" : "grey",
+                    color:
+                      getTextBeforeSecondSlash(activePath) === item.href
+                        ? "white"
+                        : "grey",
                     borderLeft:
-                      activePath === item.href
+                      getTextBeforeSecondSlash(activePath) === item.href
                         ? "3px solid #0090E7"
                         : "3px solid black",
                     backgroundColor:
-                      activePath === item.href ? "black" : "none",
+                      getTextBeforeSecondSlash(activePath) === item.href
+                        ? "black"
+                        : "none",
                     "&:hover": {
                       borderRadius: "0 40px 40px 0",
                       color: "white",
@@ -234,7 +239,9 @@ export const SidebarList = (props: any) => {
                     <item.icon color={item.color} fontSize="small" />
                   </ListItemIcon>
                   <ListItemText
-                    primary={item.text}
+                    primary={
+                      <Typography fontSize={"small"}>{item.text}</Typography>
+                    }
                     sx={{
                       opacity: props.open ? 1 : 0,
                       ml: props.open ? 1 : "auto",
@@ -242,7 +249,12 @@ export const SidebarList = (props: any) => {
                       alignItems: "center",
                     }}
                   />
-                  {openSubMenu ? <ExpandLess /> : <ExpandMore />}
+                  {props.open &&
+                    (openSubMenu ? (
+                      <ExpandLess fontSize="small" />
+                    ) : (
+                      <ExpandMore fontSize="small" />
+                    ))}
                 </ListItemButton>
               </ListItem>
               <Collapse in={openSubMenu} timeout="auto" unmountOnExit>
@@ -264,7 +276,11 @@ export const SidebarList = (props: any) => {
                       }}
                     >
                       <ListItemText
-                        primary={subitem.text}
+                        primary={
+                          <Typography fontSize={"small"} color={"grey"}>
+                            {subitem.text}
+                          </Typography>
+                        }
                         sx={{
                           opacity: props.open ? 1 : 0,
                           ml: props.open ? 1 : "auto",
@@ -282,6 +298,7 @@ export const SidebarList = (props: any) => {
               disablePadding
               sx={{
                 display: "block",
+                paddingRight: 0,
               }}
             >
               <Link href={item.href} passHref legacyBehavior>
@@ -294,13 +311,18 @@ export const SidebarList = (props: any) => {
                     borderRadius: "0 40px 40px 0",
                     marginRight: props.open ? 2 : 0,
                     border: "0px 3px 0px 0px black",
-                    color: activePath === item.href ? "white" : "grey",
+                    color:
+                      getTextBeforeSecondSlash(activePath) === item.href
+                        ? "white"
+                        : "grey",
                     borderLeft:
-                      activePath === item.href
+                      getTextBeforeSecondSlash(activePath) === item.href
                         ? "3px solid #0090E7"
                         : "3px solid black",
                     backgroundColor:
-                      activePath === item.href ? "black" : "none",
+                      getTextBeforeSecondSlash(activePath) === item.href
+                        ? "black"
+                        : "none",
                     "&:hover": {
                       borderRadius: "0 40px 40px 0",
                       color: "white",
@@ -322,7 +344,9 @@ export const SidebarList = (props: any) => {
                     <item.icon color={item.color} fontSize="small" />
                   </ListItemIcon>
                   <ListItemText
-                    primary={item.text}
+                    primary={
+                      <Typography fontSize={"small"}>{item.text}</Typography>
+                    }
                     sx={{
                       opacity: props.open ? 1 : 0,
                       ml: props.open ? 1 : "auto",
