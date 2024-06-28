@@ -4,9 +4,7 @@ import * as React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
 import { Typography, Box, Grid } from "@mui/material";
 import styles from "@/styles/ListTile.module.scss"; // Import the SCSS module
 
@@ -28,7 +26,7 @@ const ListTile: React.FC<ListTileProps> = ({
   lastItem = false, // Default to white if no backgroundColor prop is provided
 }) => {
   return (
-    <List className={styles.list} sx={{ backgroundColor: "#1d1f25" }}>
+    <List className={styles.list}>
       <ListItem className={styles.listItem}>
         <ListItemAvatar className={styles.listItemAvatar}>
           <Box

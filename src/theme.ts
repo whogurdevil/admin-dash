@@ -27,27 +27,33 @@ const theme = createTheme({
       main: "#ffffff",
     },
   },
+  typography: {
+    fontFamily: '"Rubik", sans-serif',
+  },
   components: {
     MuiCard: {
       styleOverrides: {
         root: {
-          backgroundColor: "#12141a",
+          backgroundColor: "#191c24",
+          backgroundImage: "none",
         },
       },
     },
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: "#12141a",
+          backgroundColor: "#191c24",
           boxShadow: "none",
           elevation: 0,
+          backgroundImage: "none",
         },
       },
     },
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: "#12141a",
+          backgroundColor: "#191c24",
+          border: 0,
         },
       },
     },
@@ -87,6 +93,7 @@ const theme = createTheme({
         root: {
           paddingLeft: 0,
           paddingRight: 0,
+          backgroundColor: "#191c24",
         },
       },
     },
@@ -94,7 +101,7 @@ const theme = createTheme({
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          backgroundColor: "#12141a",
+          backgroundColor: "#191c24",
         },
       },
     },
@@ -102,7 +109,7 @@ const theme = createTheme({
     MuiList: {
       styleOverrides: {
         root: {
-          backgroundColor: "#12141a",
+          backgroundColor: "#191c24",
         },
       },
     },

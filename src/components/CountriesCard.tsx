@@ -10,7 +10,7 @@ import {
   Grid,
   Box,
 } from "@mui/material";
-import GlobeMap from "./global_map"; // Assuming GlobeMap component is correctly implemented
+import GlobeMap from "./GlobalMap"; // Assuming GlobeMap component is correctly implemented
 import styles from "@/styles/CountriesCard.module.scss"; // Import the SCSS module
 
 const rows = [

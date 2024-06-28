@@ -1,4 +1,4 @@
-import useActiveLink from "@/hooks/active_link";
+import useActiveLink from "@/hooks/ActiveLink";
 import {
   Speed,
   LaptopWindows,
@@ -27,10 +27,12 @@ import {
   MenuItem,
   Divider,
   Collapse,
+  Badge,
 } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Link from "next/link";
 import React, { useState } from "react";
+import avatarImage from "@/assets/face15.jpg";
 
 const menuItems = [
   { text: "Dashboard", icon: Speed, href: "/home", color: "secondary" },
@@ -110,15 +112,29 @@ export const SidebarList = (props: any) => {
         }}
       >
         <ListItemAvatar>
-          <Avatar
-            alt={"H"}
-            src={"https://randomuser.me/api/portraits/men/3.jpg"}
-          />
+          <Badge
+            badgeContent={""}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            color="success"
+            sx={{
+              "& .MuiBadge-badge": {
+                minWidth: "8px",
+                height: "8px",
+                fontSize: "5px",
+                padding: "0 1px",
+              },
+            }}
+          >
+            <Avatar alt={"H"} src={avatarImage.src} />
+          </Badge>
         </ListItemAvatar>
         <ListItemText
           sx={{
             opacity: props.open ? 1 : 0,
-            ml: props.open ? 1 : "auto",
+            ml: props.open ? 0.5 : "auto",
           }}
           primary={"Henry Klien"}
           secondary={
@@ -130,33 +146,42 @@ export const SidebarList = (props: any) => {
         {props.open && (
           <>
             <IconButton
-              sx={{ marginLeft: "auto" }}
+              sx={{ marginRight: 1 }}
               edge="end"
               aria-label="more"
               onClick={handleMenuOpen}
             >
-              <MoreVert />
+              <MoreVert color="disabled" />
             </IconButton>
-            <Menu anchorEl={anchorEl} open={open} onClose={handleMenuClose}>
+            <Menu
+              anchorEl={anchorEl}
+              transformOrigin={{ vertical: "top", horizontal: "right" }}
+              open={open}
+              onClose={handleMenuClose}
+            >
               <MenuItem onClick={handleMenuClose}>
                 <ListItemIcon>
                   <Settings color="primary" fontSize="small" />
                 </ListItemIcon>
-                Account Settings
+                <Typography sx={{ fontSize: "12px" }}>
+                  Account Settings
+                </Typography>
               </MenuItem>
               <Divider />
               <MenuItem onClick={handleMenuClose}>
                 <ListItemIcon>
                   <Info color="secondary" fontSize="small" />
                 </ListItemIcon>
-                Logout
+                <Typography sx={{ fontSize: "12px" }}>
+                  Change Password
+                </Typography>
               </MenuItem>
               <Divider />
               <MenuItem onClick={handleMenuClose}>
                 <ListItemIcon>
                   <Today color={"success"} fontSize="small" />
                 </ListItemIcon>
-                To-do list
+                <Typography sx={{ fontSize: "12px" }}>To-do list</Typography>
               </MenuItem>
             </Menu>
           </>
@@ -267,15 +292,16 @@ export const SidebarList = (props: any) => {
                         borderRadius: "0 40px 40px 0",
                         marginRight: props.open ? 2 : 0,
                         border: "0px 3px 0px 0px black",
+                        color: "grey",
                         "&:hover": {
                           color: "white",
-                          backgroundColor: "black",
+                          backgroundColor: "transparent",
                         },
                       }}
                     >
                       <ListItemText
                         primary={
-                          <Typography fontSize={"small"} color={"grey"}>
+                          <Typography fontSize={"small"} color={"inherit"}>
                             {subitem.text}
                           </Typography>
                         }
@@ -284,6 +310,9 @@ export const SidebarList = (props: any) => {
                           ml: props.open ? 1 : "auto",
                           display: "flex",
                           alignItems: "center",
+                          "&:hover:": {
+                            color: "white",
+                          },
                         }}
                       />
                     </ListItemButton>

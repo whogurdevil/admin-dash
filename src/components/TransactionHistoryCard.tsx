@@ -3,7 +3,7 @@
 import React from "react";
 import { Box, Card, Typography } from "@mui/material";
 import { Doughnut } from "react-chartjs-2";
-import TransferCard from "./transfer_card";
+import TransferCard from "./TransferCard";
 import styles from "@/styles/TransactionHistoryCard.module.scss";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
@@ -23,12 +23,12 @@ const centerTextPlugin = {
     ctx.font = "bolder 20px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("$1200", width / 2, height / 2 - 20);
+    ctx.fillText("$1200", width / 2, height / 2 - 15);
 
     // Draw small and normal text
     ctx.fillStyle = "grey";
     ctx.font = "normal 12px Arial";
-    ctx.fillText("Total", width / 2, height / 2 + 30);
+    ctx.fillText("Total", width / 2, height / 2 + 18);
 
     ctx.restore();
   },
@@ -37,14 +37,14 @@ const centerTextPlugin = {
 const TransactionHistoryCard = (props: any) => {
   return (
     <Card className={styles.card}>
-      <Typography variant="h6" className={styles.title} fontWeight="bold">
+      <Typography variant="h6" className={styles.title}>
         Transaction History
       </Typography>
       <Box className={styles["chart-container"]}>
         <Doughnut
           data={props.data}
           options={{
-            cutout: 95,
+            cutout: 60,
             responsive: true,
             plugins: {
               legend: {

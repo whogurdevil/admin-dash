@@ -2,8 +2,8 @@ import * as React from "react";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { Drawer as MuiDrawer, IconButton } from "@mui/material";
-import { SidebarList } from "./sidebar_list";
+import { Drawer as MuiDrawer, IconButton, Typography } from "@mui/material";
+import { SidebarList } from "./SidebarList";
 
 const drawerWidth = 240;
 
@@ -63,15 +63,7 @@ const DrawerComponent: React.FC<DrawerProps> = ({ open }) => {
         }),
       }}
     >
-      <DrawerHeader>
-        <IconButton>
-          {theme.direction === "rtl" ? (
-            <ChevronRightIcon />
-          ) : (
-            <ChevronLeftIcon />
-          )}
-        </IconButton>
-      </DrawerHeader>
+      <DrawerHeader> </DrawerHeader>
       <SidebarList open={open} />
     </MuiDrawer>
   );

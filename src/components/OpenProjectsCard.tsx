@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Grid, Card, Typography, Box } from "@mui/material";
-import ListTiles from "./list_tile";
+import ListTiles from "./ListTile";
 import {
   Description,
   CloudDownload,
@@ -59,9 +59,7 @@ export default function OpenProjectsCard(props: any) {
   return (
     <Card className={styles.card}>
       <Grid container flexDirection="row" justifyContent="space-between">
-        <Typography variant="h6" fontWeight="bold">
-          Open Projects
-        </Typography>
+        <Typography variant="h6">Open Projects</Typography>
         <Box flexGrow={1} />
         <Typography color="grey">Your data status</Typography>
       </Grid>

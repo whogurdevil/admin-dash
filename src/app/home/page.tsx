@@ -1,22 +1,21 @@
-import HomeCard from "@/components/home_card";
+import HomeCard from "@/components/HomeCard";
 import { homeCardType } from "@/types/home";
 import { Grid } from "@mui/material";
-import TransactionHistoryCard from "@/components/transaction_history_card";
-import OpenProjectsCard from "@/components/open_projects_card";
-import CarousalCard from "@/components/carousal_card";
+import TransactionHistoryCard from "@/components/TransactionHistoryCard";
+import OpenProjectsCard from "@/components/OpenProjectsCard";
+import CarousalCard from "@/components/CarousalCard";
 
 import {
-  CurrencyRupee,
   BusinessCenterOutlined,
   TvOutlined,
-  HomeRepairService,
   HomeRepairServiceOutlined,
 } from "@mui/icons-material";
-import SecondaryHomeCard from "@/components/home_secondary_card";
-import OrdersTable from "@/components/home_table";
-import MessagesCard from "@/components/messages_card";
-import TodoListComponent from "@/components/todo_list";
-import CountriesCard from "@/components/countries_card";
+import SecondaryHomeCard from "@/components/HomeSecondaryCard";
+import OrdersTable from "@/components/OrdersTable";
+import MessagesCard from "@/components/MessagesCard";
+import TodoListComponent from "@/components/TodoList";
+import CountriesCard from "@/components/CountriesCard";
+import AdvertisementCard from "@/components/AdvertisementCard";
 
 const cardData = [
   {
@@ -105,6 +104,10 @@ const secondaryCardData = [
 export default function Page() {
   return (
     <Grid container padding={0} spacing={3}>
+      <Grid item xs={12} sm={12} md={12}>
+        <AdvertisementCard />
+      </Grid>
+
       {cardData.map((data: homeCardType) => (
         <Grid item xs={12} sm={6} md={3} key={data.id}>
           <HomeCard data={data} />

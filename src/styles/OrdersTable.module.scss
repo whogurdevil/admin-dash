@@ -18,9 +18,15 @@
   min-width: 800px; /* Ensure table has a minimum width */
 }
 
+.tablehead {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
 .tableCell,
 .tableTypography {
   color: grey;
+  font-size: 0.875rem;
 }
 
 .tableRow {

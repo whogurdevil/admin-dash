@@ -4,7 +4,7 @@ import styles from "@/styles/TransferCard.module.scss";
 
 const TransferCard = (props: any) => {
   return (
-    <Card variant="outlined" className={styles.card}>
+    <Card sx={{ backgroundColor: "#12151e" }} className={styles.card}>
       <Box className={styles["left-box"]}>
         <Typography className={styles.title} fontWeight="bold">
           {props.data.title}
@@ -14,7 +14,7 @@ const TransferCard = (props: any) => {
         </Typography>
       </Box>
       <Box className={styles["right-box"]}>
-        <Typography className={styles.amount} variant="h6">
+        <Typography className={styles.amount} variant="h5">
           {props.data.amount}
         </Typography>
       </Box>

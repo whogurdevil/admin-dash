@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Messagetile from "./message_tile";
+import Messagetile from "./MessageTile";
 import { Card, Grid, Typography, Box } from "@mui/material";
 import styles from "@/styles/MessageCard.module.scss"; // Import the SCSS module
 

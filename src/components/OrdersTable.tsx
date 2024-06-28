@@ -41,7 +41,7 @@ const rows = [
   },
   {
     id: 3,
-    clientName: "Michael Johnson",
+    clientName: "Michael John",
     avatarSrc: "https://randomuser.me/api/portraits/men/33.jpg",
     orderNo: "ORD003",
     productCost: "$300",
@@ -93,45 +93,45 @@ export default function OrdersTable() {
       </Typography>
       <div className={styles.tableContainer}>
         <Table className={styles.table}>
-          <TableHead>
+          <TableHead className={styles.tableHead}>
             <TableRow>
               <TableCell className={styles.tableCell}>
-                <Typography variant="h6" className={styles.tableTypography}>
+                <Typography className={styles.tableTypography}>
                   Actions
                 </Typography>
               </TableCell>
               <TableCell className={styles.tableCell}>
-                <Typography variant="h6" className={styles.tableTypography}>
+                <Typography className={styles.tableTypography}>
                   Client Name
                 </Typography>
               </TableCell>
               <TableCell className={styles.tableCell}>
-                <Typography variant="h6" className={styles.tableTypography}>
+                <Typography className={styles.tableTypography}>
                   Order No
                 </Typography>
               </TableCell>
               <TableCell className={styles.tableCell}>
-                <Typography variant="h6" className={styles.tableTypography}>
+                <Typography className={styles.tableTypography}>
                   Product Cost
                 </Typography>
               </TableCell>
               <TableCell className={styles.tableCell}>
-                <Typography variant="h6" className={styles.tableTypography}>
+                <Typography className={styles.tableTypography}>
                   Project
                 </Typography>
               </TableCell>
               <TableCell className={styles.tableCell}>
-                <Typography variant="h6" className={styles.tableTypography}>
+                <Typography className={styles.tableTypography}>
                   Payment Mode
                 </Typography>
               </TableCell>
               <TableCell className={styles.tableCell}>
-                <Typography variant="h6" className={styles.tableTypography}>
+                <Typography className={styles.tableTypography}>
                   Start Date
                 </Typography>
               </TableCell>
               <TableCell className={styles.tableCell}>
-                <Typography variant="h6" className={styles.tableTypography}>
+                <Typography className={styles.tableTypography}>
                   Payment Status
                 </Typography>
               </TableCell>

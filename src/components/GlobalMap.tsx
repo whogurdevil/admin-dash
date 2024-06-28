@@ -32,7 +32,7 @@ export default function App(props: any) {
   return (
     <div className={styles.app}>
       <WorldMap
-        size="xl"
+        size="lg"
         data={data}
         backgroundColor="transparent"
         color="white"
