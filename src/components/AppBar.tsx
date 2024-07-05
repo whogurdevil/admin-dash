@@ -319,7 +319,7 @@ const AppBarComponent: React.FC<AppBarProps> = ({
   return (
     <AppBar position="fixed" sx={{ paddingY: "3px" }}>
       <Toolbar>
-        <Box sx={{ width: open ? drawerWidth + 120 : 50 }}>
+        <Box sx={{ width: open ? drawerWidth + 120 : 50, paddingY: 2 }}>
           {open ? (
             <Image
               alt="c"
